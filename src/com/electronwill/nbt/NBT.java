@@ -1,13 +1,12 @@
 package com.electronwill.nbt;
 
-import java.io.File;
-import java.io.FileInputStream;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.nio.ByteBuffer;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Utility class for reading and writing NBT data.
@@ -29,99 +28,40 @@ public final class NBT {
 			TAG_BYTE_ARRAY = 7, TAG_STRING = 8, TAG_LIST = 9, TAG_COMPOUND = 10, TAG_INT_ARRAY = 11;
 
 	/**
-	 * Magic value byte of a compressed file.
+	 * Writes a TagCompound to an OutputStream.
 	 */
-	public static final byte GZIP_MAGIC_1 = (byte) 0x1f, GZIP_MAGIC_2 = (byte) 0x8b, ZLIB_MAGIC = (byte) 0x78;
+	public static void write(Map<String, Object> compound, OutputStream out) throws IOException, NBTException {
+		write(compound, "", out);
+	}
 
 	/**
 	 * Writes a TagCompound to an OutputStream.
 	 */
-	public static void write(TagCompound compound, OutputStream out) throws IOException, NBTException {
+	public static void write(Map<String, Object> compound, String name, OutputStream out) throws IOException, NBTException {
 		NBTWriter writer = new NBTWriter(out);
-		writer.write(compound);
-		writer.close();
+		writer.write(compound, name);
 	}
 
 	/**
-	 * Reads one NBT Tag_Compound from a file. First the encoding of the file is detected, and a decompression
-	 * method is chosen if needed.
+	 * Reads one NBT Tag_Compound from an InputStream.
 	 */
-	public static TagCompound detectAndRead(File file) throws IOException, NBTException {
-		FileInputStream input = new FileInputStream(file);
-		return detectAndRead(input);
+	public static ReadTagCompound read(InputStream in) throws IOException, NBTException {
+		NBTReader reader = new NBTReader(in);
+		return reader.read();
 	}
 
 	/**
-	 * Reads one NBT Tag_Compound from an InputStream. First the encoding of the stream is detected, and a
-	 * decompression method is chosen if needed. This method actually calls
-	 * {@link #detectAndRead(java.io.InputStream, false)}.
-	 *
-	 * @param in InputStream to read data from
-	 * @return the parsed nbt data, as a {@link TagCompound}.
-	 * @throws IOException if a reading problem occur
-	 * @throws NBTException if a parsing problem occur
+	 * Reads one NBT Tag_Compound from a byte array.
 	 */
-	public static TagCompound detectAndRead(InputStream in) throws IOException, NBTException {
-		return detectAndRead(in, false);
+	public static ReadTagCompound read(byte[] in) throws IOException, NBTException {
+		return read(new ByteArrayInputStream(in));
 	}
 
 	/**
-	 * Reads one NBT Tag_Compound from an InputStream. This method does not support compressed data.
+	 * Reads one NBT Tag_Compound from a byte array.
 	 */
-	public static TagCompound read(InputStream in) throws IOException, NBTException {
-		NBTParser parser = new NBTParser(in);
-		return parser.parse();
-	}
-
-	/**
-	 * Reads one or more NBT Tag_Compound from an InputStream. First the encoding of the stream is detected,
-	 * and a decompression method is chosen if needed.
-	 */
-	public static List<TagCompound> detectAndReadAll(InputStream in) throws IOException, NBTException {
-		InputStream cin = CompressionDetector.getStream(in);
-		NBTParser parser = new NBTParser(cin);
-		return parser.parseAll();
-	}
-
-	/**
-	 * Reads one or more NBT Tag_Compound from an InputStream. This method does not support compressed data.
-	 */
-	public static List<TagCompound> readAll(InputStream in) throws IOException, NBTException {
-		NBTParser parser = new NBTParser(in);
-		return parser.parseAll();
-	}
-
-	/**
-	 * Reads one NBT Tag_Compound from an InputStream. First the encoding of the stream is detected, and a
-	 * decompression method is chosen if needed.
-	 *
-	 * @param in InputStream to read data from
-	 * @param debug <code>true</code> if we should use {@link NBTParserDebug} instead of
-	 * {@link NBTParser}.
-	 * @return the parsed nbt data, as a {@link TagCompound}.
-	 * @throws IOException
-	 * @throws NBTException If an unexpected problem occur.
-	 */
-	public static TagCompound detectAndRead(InputStream in, boolean debug) throws IOException, NBTException {
-		InputStream cin = CompressionDetector.getStream(in);
-		NBTParser parser = debug ? new NBTParserDebug(cin) : new NBTParser(cin);
-		return parser.parse();
-	}
-
-	/**
-	 * Reads a NBT Tag_Compound from a byte array containing. This method does not support compressed data.
-	 */
-	public static TagCompound read(byte[] input) throws IOException, NBTException {
-		NBTParser parser = new NBTParser(input);
-		return parser.parse();
-	}
-
-	/**
-	 * Reads one NBT Tag_Compound from a ByteBuffer. This method does not support compressed data.
-	 */
-	public static TagCompound read(ByteBuffer input) throws IOException, NBTException {
-		NBTParser parser = new NBTParser(input);
-		return parser.parse();
+	public static ReadTagCompound read(byte[] in, int offset, int length) throws IOException, NBTException {
+		return read(new ByteArrayInputStream(in, offset, length));
 	}
 
 	/**

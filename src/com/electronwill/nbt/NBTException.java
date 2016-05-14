@@ -1,7 +1,7 @@
 package com.electronwill.nbt;
 
 /**
- * Thrown when a problem occur during parsing or writing NBT data.
+ * Thrown when a problem occurs during parsing or writing NBT data.
  *
  * @author TheElectronWill
  */
