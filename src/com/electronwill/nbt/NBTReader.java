@@ -131,7 +131,7 @@ public final class NBTReader {
 	 * @param length the number of integers to read
 	 * @return the next x integers
 	 */
-	protected List<Integer> nextIntList(final int length) throws IOException {
+	List<Integer> nextIntList(final int length) throws IOException {
 		ArrayList<Integer> list = new ArrayList<>(length);
 		for (int j = 0; j < length; j++) {
 			list.add(in.readInt());
@@ -145,7 +145,7 @@ public final class NBTReader {
 	 * @param length the number of bytes to read
 	 * @return the next x bytes
 	 */
-	protected List<Byte> nextByteList(final int length) throws IOException {
+	List<Byte> nextByteList(final int length) throws IOException {
 		ArrayList<Byte> list = new ArrayList<>(length);
 		for (int j = 0; j < length; j++) {
 			list.add(in.readByte());
@@ -159,7 +159,7 @@ public final class NBTReader {
 	 * @param length the number of shorts to read
 	 * @return the next x shorts
 	 */
-	protected List<Short> nextShortList(final int length) throws IOException {
+	List<Short> nextShortList(final int length) throws IOException {
 		ArrayList<Short> list = new ArrayList<>(length);
 		for (int j = 0; j < length; j++) {
 			list.add(in.readShort());
@@ -173,7 +173,7 @@ public final class NBTReader {
 	 * @param length the number of longs to read
 	 * @return the next x longs
 	 */
-	protected List<Long> nextLongList(final int length) throws IOException {
+	List<Long> nextLongList(final int length) throws IOException {
 		ArrayList<Long> list = new ArrayList<>(length);
 		for (int j = 0; j < length; j++) {
 			list.add(in.readLong());
@@ -187,7 +187,7 @@ public final class NBTReader {
 	 * @param length the number of floats to read
 	 * @return the next x floats
 	 */
-	protected List<Float> nextFloatList(final int length) throws IOException {
+	List<Float> nextFloatList(final int length) throws IOException {
 		ArrayList<Float> list = new ArrayList<>(length);
 		for (int j = 0; j < length; j++) {
 			list.add(in.readFloat());
@@ -201,7 +201,7 @@ public final class NBTReader {
 	 * @param length the number of doubles to read
 	 * @return the next x doubles
 	 */
-	protected List<Double> nextDoubleList(final int length) throws IOException {
+	List<Double> nextDoubleList(final int length) throws IOException {
 		ArrayList<Double> list = new ArrayList<>(length);
 		for (int j = 0; j < length; j++) {
 			list.add(in.readDouble());
@@ -215,7 +215,7 @@ public final class NBTReader {
 	 * @param length the number of byte arrays to read
 	 * @return the next x byte arrays
 	 */
-	protected List<byte[]> nextByteArrayList(final int length) throws IOException {
+	List<byte[]> nextByteArrayList(final int length) throws IOException {
 		ArrayList<byte[]> list = new ArrayList<>(length);
 		for (int j = 0; j < length; j++) {
 			list.add(nextByteArray());
@@ -229,7 +229,7 @@ public final class NBTReader {
 	 * @param length the number of int arrays to read
 	 * @return the next int int arrays
 	 */
-	protected List<int[]> nextIntArrayList(final int length) throws IOException {
+	List<int[]> nextIntArrayList(final int length) throws IOException {
 		ArrayList<int[]> list = new ArrayList<>(length);
 		for (int j = 0; j < length; j++) {
 			list.add(nextIntArray());
@@ -243,7 +243,7 @@ public final class NBTReader {
 	 * @param length the number of Strings to read
 	 * @return the next x Strings
 	 */
-	protected List<String> nextStringList(final int length) throws IOException {
+	List<String> nextStringList(final int length) throws IOException {
 		ArrayList<String> list = new ArrayList<>(length);
 		for (int j = 0; j < length; j++) {
 			list.add(in.readUTF());
@@ -257,7 +257,7 @@ public final class NBTReader {
 	 * @param length the number of lists to read
 	 * @return the next x lists
 	 */
-	protected List<List<?>> nextNestedList(final int length) throws IOException {
+	List<List<?>> nextNestedList(final int length) throws IOException {
 		ArrayList<List<?>> list = new ArrayList<>(length);
 		for (int j = 0; j < length; j++) {
 			list.add(nextList());
@@ -271,7 +271,7 @@ public final class NBTReader {
 	 * @param length the number of Tag_Compound to read
 	 * @return the next x compounds
 	 */
-	protected List<Map<String, Object>> nextCompoundList(final int length) throws IOException {
+	List<Map<String, Object>> nextCompoundList(final int length) throws IOException {
 		ArrayList<Map<String, Object>> list = new ArrayList<>(length);
 		for (int j = 0; j < length; j++) {
 			list.add(readCompound());
@@ -284,7 +284,7 @@ public final class NBTReader {
 	 *
 	 * @return the next byte array
 	 */
-	protected byte[] nextByteArray() throws IOException {
+	byte[] nextByteArray() throws IOException {
 		int length = in.readInt();//Length of the array
 		byte[] array = new byte[length];
 		in.readFully(array);
@@ -296,7 +296,7 @@ public final class NBTReader {
 	 *
 	 * @return the next int array
 	 */
-	protected int[] nextIntArray() throws IOException {
+	int[] nextIntArray() throws IOException {
 		int length = in.readInt();//Length of the array
 		int[] array = new int[length];
 		for (int j = 0; j < length; j++) {
