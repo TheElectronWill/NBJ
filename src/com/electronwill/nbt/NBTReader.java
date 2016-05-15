@@ -26,6 +26,10 @@ public final class NBTReader {
 	}
 
 	public ReadTagCompound read() throws IOException {
+		byte typeId = in.readByte();
+		if (typeId != NBT.TAG_COMPOUND) {
+			return null;
+		}
 		String name = in.readUTF();
 		Map<String, Object> data = readCompound();
 		return new ReadTagCompound(name, data);
