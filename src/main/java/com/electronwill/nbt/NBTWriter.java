@@ -51,7 +51,7 @@ public final class NBTWriter {
 	/**
 	 * Writes the value of a Tag_Compound. Does NOT write the {@link NBT#TAG_COMPOUND} byte.
 	 */
-	protected void writeCompound(Map<String, Object> compound) throws IOException {
+	private void writeCompound(Map<String, Object> compound) throws IOException {
 		for (Entry<String, Object> e : compound.entrySet()) {
 			String key = e.getKey();
 			Object value = e.getValue();
@@ -103,7 +103,7 @@ public final class NBTWriter {
 	/**
 	 * Writes the value of a Tag_List. Does NOT write the {@link NBT#TAG_LIST}byte.
 	 */
-	protected void writeList(List<?> list) throws IOException {
+	private void writeList(List<?> list) throws IOException {
 		byte typeId = list.isEmpty() ? NBT.TAG_END : NBT.getTagId(list.get(0));//Type of the elements in this list
 		out.write(typeId);
 		out.writeInt(list.size());
@@ -169,7 +169,7 @@ public final class NBTWriter {
 	/**
 	 * Writes successive integers.
 	 */
-	protected void writeIntArray(final int[] array) throws IOException {
+	private void writeIntArray(final int[] array) throws IOException {
 		out.writeInt(array.length);
 		for (int i : array) {
 			out.writeInt(i);
@@ -179,7 +179,7 @@ public final class NBTWriter {
 	/**
 	 * Writes the length of the array and its value.
 	 */
-	protected void writeByteArray(final byte[] array) throws IOException {
+	private void writeByteArray(final byte[] array) throws IOException {
 		out.writeInt(array.length);
 		for (byte b : array) {
 			out.write(b);
