@@ -13,9 +13,9 @@ import java.util.Map;
  *
  * @author TheElectronWill
  */
-public final class NBT {
+public final class Nbt {
 
-	private NBT() {
+	private Nbt() {
 	}
 
 	/**
@@ -30,37 +30,37 @@ public final class NBT {
 	/**
 	 * Writes a TagCompound to an OutputStream.
 	 */
-	public static void write(Map<String, Object> compound, OutputStream out) throws IOException, NBTException {
+	public static void write(Map<String, Object> compound, OutputStream out) throws IOException, NbtException {
 		write(compound, "", out);
 	}
 
 	/**
 	 * Writes a TagCompound to an OutputStream.
 	 */
-	public static void write(Map<String, Object> compound, String name, OutputStream out) throws IOException, NBTException {
-		NBTWriter writer = new NBTWriter(out);
+	public static void write(Map<String, Object> compound, String name, OutputStream out) throws IOException, NbtException {
+		NbtWriter writer = new NbtStreamWriter(out);
 		writer.write(compound, name);
 	}
 
 	/**
 	 * Reads one NBT Tag_Compound from an InputStream.
 	 */
-	public static ReadTagCompound read(InputStream in) throws IOException, NBTException {
-		NBTReader reader = new NBTReader(in);
+	public static ReadTagCompound read(InputStream in) throws IOException, NbtException {
+		NbtReader reader = new NbtReader(in);
 		return reader.read();
 	}
 
 	/**
 	 * Reads one NBT Tag_Compound from a byte array.
 	 */
-	public static ReadTagCompound read(byte[] in) throws IOException, NBTException {
+	public static ReadTagCompound read(byte[] in) throws IOException, NbtException {
 		return read(new ByteArrayInputStream(in));
 	}
 
 	/**
 	 * Reads one NBT Tag_Compound from a byte array.
 	 */
-	public static ReadTagCompound read(byte[] in, int offset, int length) throws IOException, NBTException {
+	public static ReadTagCompound read(byte[] in, int offset, int length) throws IOException, NbtException {
 		return read(new ByteArrayInputStream(in, offset, length));
 	}
 
@@ -108,7 +108,7 @@ public final class NBT {
 		if (class1 == double.class || class1 == Double.class) {
 			return TAG_DOUBLE;
 		}
-		throw new NBTException("Illegal NBT object type: " + o.getClass().getCanonicalName());
+		throw new NbtException("Illegal NBT object type: " + o.getClass().getCanonicalName());
 	}
 
 }

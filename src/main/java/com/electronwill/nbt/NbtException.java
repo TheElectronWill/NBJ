@@ -5,22 +5,22 @@ package com.electronwill.nbt;
  *
  * @author TheElectronWill
  */
-public class NBTException extends RuntimeException {
+public class NbtException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
 
-	public NBTException() {
+	public NbtException() {
 	}
 
-	public NBTException(String message) {
+	public NbtException(String message) {
 		super(message);
 	}
 
-	public NBTException(String message, Throwable cause) {
+	public NbtException(String message, Throwable cause) {
 		super(message, cause);
 	}
 
-	public NBTException(Throwable cause) {
+	public NbtException(Throwable cause) {
 		super(cause);
 	}
 

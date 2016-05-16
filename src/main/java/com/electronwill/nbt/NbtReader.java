@@ -14,21 +14,21 @@ import java.util.Map;
  *
  * @author TheElectronWill
  */
-public final class NBTReader {
+public final class NbtReader {
 
 	private final DataInput in;
 
-	public NBTReader(DataInput in) {
+	public NbtReader(DataInput in) {
 		this.in = in;
 	}
 
-	public NBTReader(InputStream in) {
+	public NbtReader(InputStream in) {
 		this.in = new DataInputStream(in);
 	}
 
 	public ReadTagCompound read() throws IOException {
 		byte typeId = in.readByte();
-		if (typeId != NBT.TAG_COMPOUND) {
+		if (typeId != Nbt.TAG_COMPOUND) {
 			return null;
 		}
 		String name = in.readUTF();
@@ -83,7 +83,7 @@ public final class NBTReader {
 					compound.put(tagName, nextIntArray());
 					break;
 				default:
-					throw new NBTException("Invalid tag type id: " + typeId);
+					throw new NbtException("Invalid tag type id: " + typeId);
 			}
 		}
 	}
@@ -126,7 +126,7 @@ public final class NBTReader {
 			case 11://Tag_Int_Array
 				return nextIntArrayList(length);
 			default:
-				throw new NBTException("Invalid list type id: " + typeId);
+				throw new NbtException("Invalid list type id: " + typeId);
 		}
 	}
 
