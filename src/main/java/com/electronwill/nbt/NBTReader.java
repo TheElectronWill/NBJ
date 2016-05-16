@@ -1,5 +1,6 @@
 package com.electronwill.nbt;
 
+import java.io.DataInput;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,9 +16,9 @@ import java.util.Map;
  */
 public final class NBTReader {
 
-	private final DataInputStream in;
+	private final DataInput in;
 
-	public NBTReader(DataInputStream in) {
+	public NBTReader(DataInput in) {
 		this.in = in;
 	}
 
