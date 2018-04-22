@@ -44,7 +44,7 @@ public class Tag<V> {
 		return value;
 	}
 
-	public static Tag<?> read(DataInput input) throws IOException {
+	public static Tag<?> readNamed(DataInput input) throws IOException {
 		int typeId = input.readByte();
 		TagType<?> type = Types.get(typeId);
 		String name = Types.STRING.readValue(input);
@@ -52,8 +52,20 @@ public class Tag<V> {
 		return new Tag(type, name, value);
 	}
 
-	public static Tag<?> read(InputStream input) throws IOException {
+	public static Tag<?> readNamed(InputStream input) throws IOException {
 		DataInput dataInput = (input instanceof DataInput) ? (DataInput)input : new DataInputStream(input);
-		return read(dataInput);
+		return readNamed(dataInput);
+	}
+
+	public static Tag<?> readNameless(DataInput input) throws IOException {
+		int typeId = input.readByte();
+		TagType<?> type = Types.get(typeId);
+		Object value = type.readValue(input);
+		return new Tag(type, "", value);
+	}
+
+	public static Tag<?> readNameless(InputStream input) throws IOException {
+		DataInput dataInput = (input instanceof DataInput) ? (DataInput)input : new DataInputStream(input);
+		return readNameless(dataInput);
 	}
 }

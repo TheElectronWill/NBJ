@@ -54,7 +54,7 @@ public final class TagCompound extends Tag<Map<String, Object>> implements Itera
 		};
 	}
 
-	public static TagCompound read(DataInput input) throws IOException {
+	public static TagCompound readNamed(DataInput input) throws IOException {
 		int typeId = input.readByte();
 		if (typeId != Types.COMPOUND.id()) {
 			throw new NbtException("Invalid first id in TagCompound, expected Compound's id, not " + typeId);
@@ -64,8 +64,8 @@ public final class TagCompound extends Tag<Map<String, Object>> implements Itera
 		return new TagCompound(name, values);
 	}
 
-	public static TagCompound read(InputStream input) throws IOException {
+	public static TagCompound readNamed(InputStream input) throws IOException {
 		DataInput dataInput = (input instanceof DataInput) ? (DataInput)input : new DataInputStream(input);
-		return read(dataInput);
+		return readNamed(dataInput);
 	}
 }
