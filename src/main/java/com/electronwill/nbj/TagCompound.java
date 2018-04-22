@@ -1,7 +1,7 @@
-package com.electronwill.nbt;
+package com.electronwill.nbj;
 
-import com.electronwill.nbt.tagtypes.TagType;
-import com.electronwill.nbt.tagtypes.Types;
+import com.electronwill.nbj.tagtypes.TagType;
+import com.electronwill.nbj.tagtypes.Types;
 
 import java.util.HashMap;
 import java.util.Iterator;

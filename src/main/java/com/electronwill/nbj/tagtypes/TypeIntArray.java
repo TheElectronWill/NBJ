@@ -1,4 +1,4 @@
-package com.electronwill.nbt.tagtypes;
+package com.electronwill.nbj.tagtypes;
 
 import java.io.DataInput;
 import java.io.DataOutput;

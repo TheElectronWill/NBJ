@@ -1,4 +1,4 @@
-package com.electronwill.nbt;
+package com.electronwill.nbj;
 
 /**
  * Thrown when a problem occurs during parsing or writing NBT data.

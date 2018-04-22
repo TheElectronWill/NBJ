@@ -1,4 +1,4 @@
-package com.electronwill.nbt;
+package com.electronwill.nbj;
 
 import java.io.DataInput;
 import java.io.DataInputStream;

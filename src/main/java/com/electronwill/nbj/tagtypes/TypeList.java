@@ -1,4 +1,4 @@
-package com.electronwill.nbt.tagtypes;
+package com.electronwill.nbj.tagtypes;
 
 import java.io.DataInput;
 import java.io.DataOutput;
@@ -7,11 +7,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * Reads and writes object arrays as NBT lists.
- */
-public class TypeObjArray implements TagType<Object[]> {
-	TypeObjArray() {}
+public class TypeList implements TagType<List<?>> {
+	TypeList() {}
 
 	@Override
 	public int id() {
@@ -19,24 +16,27 @@ public class TypeObjArray implements TagType<Object[]> {
 	}
 
 	@Override
-	public Object[] readValue(DataInput input) throws IOException {
+	public List<?> readValue(DataInput input) throws IOException {
 		byte typeId = input.readByte();
 		TagType<?> type = Types.get(typeId);
 		int length = input.readInt();
-		Object[] array = new Object[length];
+		if (length == 0) {
+			return Collections.emptyList();
+		}
+		List<Object> list = new ArrayList<>(length);
 		for (int i = 0; i < length; i++) {
 			Object element = type.readValue(input);
-			array[i] = element;
+			list.add(element);
 		}
-		return array;
+		return list;
 	}
 
 	@Override
-	public void writeValue(Object[] value, DataOutput output) throws IOException {
-		Object firstElement = value.length == 0 ? null : value[0];
+	public void writeValue(List<?> value, DataOutput output) throws IOException {
+		Object firstElement = value.size() == 0 ? null : value.get(0);
 		TagType<Object> type = Types.get(firstElement);
 		output.writeByte(type.id());
-		output.writeInt(value.length);
+		output.writeInt(value.size());
 		for (Object element : value) {
 			type.writeValue(element, output);
 		}

@@ -1,6 +1,6 @@
-package com.electronwill.nbt.tagtypes;
+package com.electronwill.nbj.tagtypes;
 
-import com.electronwill.nbt.NbtException;
+import com.electronwill.nbj.NbtException;
 
 import java.util.Collection;
 import java.util.List;
