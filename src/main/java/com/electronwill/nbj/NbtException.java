@@ -9,8 +9,7 @@ public class NbtException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
 
-	public NbtException() {
-	}
+	public NbtException() {}
 
 	public NbtException(String message) {
 		super(message);
@@ -23,5 +22,4 @@ public class NbtException extends RuntimeException {
 	public NbtException(Throwable cause) {
 		super(cause);
 	}
-
 }
