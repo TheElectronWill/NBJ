@@ -15,8 +15,7 @@ import java.util.Map;
  */
 public final class Nbt {
 
-	private Nbt() {
-	}
+	private Nbt() {}
 
 	/**
 	 * NBT Tag ID (takes place before the tag payload).
@@ -45,7 +44,7 @@ public final class Nbt {
 	/**
 	 * Reads one NBT Tag_Compound from an InputStream.
 	 */
-	public static ReadTagCompound read(InputStream in) throws IOException, NbtException {
+	public static TagCompound read(InputStream in) throws IOException, NbtException {
 		NbtReader reader = new NbtReader(in);
 		return reader.read();
 	}
@@ -53,14 +52,14 @@ public final class Nbt {
 	/**
 	 * Reads one NBT Tag_Compound from a byte array.
 	 */
-	public static ReadTagCompound read(byte[] in) throws IOException, NbtException {
+	public static TagCompound read(byte[] in) throws IOException, NbtException {
 		return read(new ByteArrayInputStream(in));
 	}
 
 	/**
 	 * Reads one NBT Tag_Compound from a byte array.
 	 */
-	public static ReadTagCompound read(byte[] in, int offset, int length) throws IOException, NbtException {
+	public static TagCompound read(byte[] in, int offset, int length) throws IOException, NbtException {
 		return read(new ByteArrayInputStream(in, offset, length));
 	}
 

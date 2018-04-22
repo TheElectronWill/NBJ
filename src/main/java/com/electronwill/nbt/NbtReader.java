@@ -26,18 +26,18 @@ public final class NbtReader {
 		this.in = new DataInputStream(in);
 	}
 
-	public ReadTagCompound read() throws IOException {
+	public TagCompound read() throws IOException {
 		byte typeId = in.readByte();
 		if (typeId != Nbt.TAG_COMPOUND) {
 			return null;
 		}
 		String name = in.readUTF();
 		Map<String, Object> data = readCompound();
-		return new ReadTagCompound(name, data);
+		return new TagCompound(name, data);
 	}
 
 	/**
-	 * Reads the next NBT Tag_Compound, and the Tag_End after it. This method does NOT read the
+	 * Reads the next NBT Tag_Compound, and the Tag_End after it. This method does NOT readValue the
 	 * id byte of the tag.
 	 */
 	public Map<String, Object> readCompound() throws IOException {
@@ -89,7 +89,7 @@ public final class NbtReader {
 	}
 
 	/**
-	 * Reads the next NBT "List" tag. This method does NOT read the id byte of the tag.
+	 * Reads the next NBT "List" tag. This method does NOT readValue the id byte of the tag.
 	 *
 	 * @return the next Tag_List
 	 */
@@ -100,7 +100,7 @@ public final class NbtReader {
 			case 0://Tag_End
 				ArrayList<Byte> endList = new ArrayList<>(length);
 				for (int j = 0; j < length; j++) {
-					endList.add((byte) 0);
+					endList.add((byte)0);
 				}
 				return endList;
 			case 1://Tag_Byte
@@ -133,7 +133,7 @@ public final class NbtReader {
 	/**
 	 * Reads the next x integers.
 	 *
-	 * @param length the number of integers to read
+	 * @param length the number of integers to readValue
 	 * @return the next x integers
 	 */
 	private List<Integer> nextIntList(final int length) throws IOException {
@@ -147,7 +147,7 @@ public final class NbtReader {
 	/**
 	 * Reads the next x bytes.
 	 *
-	 * @param length the number of bytes to read
+	 * @param length the number of bytes to readValue
 	 * @return the next x bytes
 	 */
 	private List<Byte> nextByteList(final int length) throws IOException {
@@ -161,7 +161,7 @@ public final class NbtReader {
 	/**
 	 * Reads the next x shorts.
 	 *
-	 * @param length the number of shorts to read
+	 * @param length the number of shorts to readValue
 	 * @return the next x shorts
 	 */
 	private List<Short> nextShortList(final int length) throws IOException {
@@ -175,7 +175,7 @@ public final class NbtReader {
 	/**
 	 * Reads the next x longs.
 	 *
-	 * @param length the number of longs to read
+	 * @param length the number of longs to readValue
 	 * @return the next x longs
 	 */
 	private List<Long> nextLongList(final int length) throws IOException {
@@ -189,7 +189,7 @@ public final class NbtReader {
 	/**
 	 * Reads the next x floats.
 	 *
-	 * @param length the number of floats to read
+	 * @param length the number of floats to readValue
 	 * @return the next x floats
 	 */
 	private List<Float> nextFloatList(final int length) throws IOException {
@@ -203,7 +203,7 @@ public final class NbtReader {
 	/**
 	 * Reads the next x doubles.
 	 *
-	 * @param length the number of doubles to read
+	 * @param length the number of doubles to readValue
 	 * @return the next x doubles
 	 */
 	private List<Double> nextDoubleList(final int length) throws IOException {
@@ -217,7 +217,7 @@ public final class NbtReader {
 	/**
 	 * Reads the next x byte arrays.
 	 *
-	 * @param length the number of byte arrays to read
+	 * @param length the number of byte arrays to readValue
 	 * @return the next x byte arrays
 	 */
 	private List<byte[]> nextByteArrayList(final int length) throws IOException {
@@ -231,7 +231,7 @@ public final class NbtReader {
 	/**
 	 * Reads the next x integer arrays.
 	 *
-	 * @param length the number of int arrays to read
+	 * @param length the number of int arrays to readValue
 	 * @return the next int int arrays
 	 */
 	private List<int[]> nextIntArrayList(final int length) throws IOException {
@@ -245,7 +245,7 @@ public final class NbtReader {
 	/**
 	 * Reads the next x Strings.
 	 *
-	 * @param length the number of Strings to read
+	 * @param length the number of Strings to readValue
 	 * @return the next x Strings
 	 */
 	private List<String> nextStringList(final int length) throws IOException {
@@ -259,7 +259,7 @@ public final class NbtReader {
 	/**
 	 * Reads the next x Tag_List.
 	 *
-	 * @param length the number of lists to read
+	 * @param length the number of lists to readValue
 	 * @return the next x lists
 	 */
 	private List<List<?>> nextNestedList(final int length) throws IOException {
@@ -273,7 +273,7 @@ public final class NbtReader {
 	/**
 	 * Reads the next x Tag_Compound.
 	 *
-	 * @param length the number of Tag_Compound to read
+	 * @param length the number of Tag_Compound to readValue
 	 * @return the next x compounds
 	 */
 	private List<Map<String, Object>> nextCompoundList(final int length) throws IOException {
@@ -285,7 +285,7 @@ public final class NbtReader {
 	}
 
 	/**
-	 * Reads 4 bytes as a integer x, defining the length of the array, then read x bytes.
+	 * Reads 4 bytes as a integer x, defining the length of the array, then readValue x bytes.
 	 *
 	 * @return the next byte array
 	 */
@@ -297,7 +297,7 @@ public final class NbtReader {
 	}
 
 	/**
-	 * Reads 4 bytes as a integer x, defining the length of the array, then read x integers.
+	 * Reads 4 bytes as a integer x, defining the length of the array, then readValue x integers.
 	 *
 	 * @return the next int array
 	 */
