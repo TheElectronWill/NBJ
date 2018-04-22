@@ -43,4 +43,17 @@ public class Tag<V> {
 	public V getValue() {
 		return value;
 	}
+
+	public static Tag<?> read(DataInput input) throws IOException {
+		int typeId = input.readByte();
+		TagType<?> type = Types.get(typeId);
+		String name = Types.STRING.readValue(input);
+		Object value = type.readValue(input);
+		return new Tag(type, name, value);
+	}
+
+	public static Tag<?> read(InputStream input) throws IOException {
+		DataInput dataInput = (input instanceof DataInput) ? (DataInput)input : new DataInputStream(input);
+		return read(dataInput);
+	}
 }
