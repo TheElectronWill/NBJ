@@ -32,7 +32,7 @@ public class TypeCompound implements TagType<Map<String, Object>> {
 		for (Map.Entry<String, Object> entry : value.entrySet()) {
 			String elementName = entry.getKey();
 			Object element = entry.getValue();
-			TagType<Object> elementType = Types.get(element);
+			TagType<Object> elementType = Types.forValue(element);
 			Types.STRING.writeValue(elementName, output);
 			elementType.writeValue(element, output);
 		}

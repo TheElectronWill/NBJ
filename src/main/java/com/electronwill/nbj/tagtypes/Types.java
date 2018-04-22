@@ -35,7 +35,7 @@ public final class Types {
 		return TYPES[id];
 	}
 
-	public static <T> TagType<? super T> get(T o) {
+	public static <T> TagType<? super T> forValue(T o) {
 		if (o == null) {
 			return (TagType<T>)END;
 		}

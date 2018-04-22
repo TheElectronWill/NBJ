@@ -34,7 +34,7 @@ public class TypeList implements TagType<List<?>> {
 	@Override
 	public void writeValue(List<?> value, DataOutput output) throws IOException {
 		Object firstElement = value.size() == 0 ? null : value.get(0);
-		TagType<Object> type = Types.get(firstElement);
+		TagType<Object> type = Types.forValue(firstElement);
 		output.writeByte(type.id());
 		output.writeInt(value.size());
 		for (Object element : value) {

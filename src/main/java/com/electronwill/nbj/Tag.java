@@ -3,8 +3,7 @@ package com.electronwill.nbj;
 import com.electronwill.nbj.tagtypes.TagType;
 import com.electronwill.nbj.tagtypes.Types;
 
-import java.io.DataOutput;
-import java.io.IOException;
+import java.io.*;
 
 /**
  * Represents an NBT tag.

@@ -31,7 +31,7 @@ public class TypeObjArray implements TagType<Object[]> {
 	@Override
 	public void writeValue(Object[] value, DataOutput output) throws IOException {
 		Object firstElement = value.length == 0 ? null : value[0];
-		TagType<Object> type = Types.get(firstElement);
+		TagType<Object> type = Types.forValue(firstElement);
 		output.writeByte(type.id());
 		output.writeInt(value.length);
 		for (Object element : value) {

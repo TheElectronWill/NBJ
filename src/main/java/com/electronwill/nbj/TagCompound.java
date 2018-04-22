@@ -48,7 +48,7 @@ public final class TagCompound extends Tag<Map<String, Object>> implements Itera
 			@Override
 			public Tag<?> next() {
 				Map.Entry<String, Object> next = entryIterator.next();
-				TagType<Object> type = Types.get(next.getValue());
+				TagType<Object> type = Types.forValue(next.getValue());
 				return new Tag<>(type, next.getKey(), next.getValue());
 			}
 		};
