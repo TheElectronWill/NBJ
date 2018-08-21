@@ -3,6 +3,7 @@ package com.electronwill.nbj.tagtypes;
 import com.electronwill.nbj.NbtException;
 
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -27,6 +28,8 @@ public final class Types {
 	public static final TagType<long[]> LONG_ARRAY = new TypeLongArray();
 
 	public static final TagType<Object[]> OBJ_ARRAY = new TypeObjArray();
+	public static final TagType<Iterable<?>> ITERABLE = new TypeIterable();
+	public static final TagType<Iterator<?>> ITERATOR = new TypeIterator();
 
 	private static final TagType<?>[] TYPES = { END, BYTE, SHORT, INT, LONG, FLOAT, DOUBLE,
 			BYTE_ARRAY, STRING, LIST, COMPOUND, INT_ARRAY, LONG_ARRAY };
@@ -35,7 +38,7 @@ public final class Types {
 		return TYPES[id];
 	}
 
-	public static <T> TagType<? super T> forValue(T o) {
+	public static <T> TagType<? super T> forValue(final T o) {
 		if (o == null) {
 			return (TagType<T>)END;
 		}
@@ -54,8 +57,14 @@ public final class Types {
 		if (o instanceof Map) {
 			return (TagType<T>)COMPOUND;
 		}
-		if (o instanceof Collection) {
+		if (o instanceof List) {
 			return (TagType<T>)LIST;
+		}
+		if (o instanceof Iterable) {
+			return (TagType<T>)ITERABLE;
+		}
+		if (o instanceof Iterator) {
+			return (TagType<T>)ITERATOR;
 		}
 		Class<?> clazz = o.getClass();
 		if (clazz == String.class) {
