@@ -26,7 +26,7 @@ public final class Types {
 	public static final TagType<int[]> INT_ARRAY = new TypeIntArray();
 	public static final TagType<long[]> LONG_ARRAY = new TypeLongArray();
 
-	public static final TagType<long[]> OBJ_ARRAY = new TypeLongArray();
+	public static final TagType<Object[]> OBJ_ARRAY = new TypeObjArray();
 
 	private static final TagType<?>[] TYPES = { END, BYTE, SHORT, INT, LONG, FLOAT, DOUBLE,
 			BYTE_ARRAY, STRING, LIST, COMPOUND, INT_ARRAY, LONG_ARRAY };
