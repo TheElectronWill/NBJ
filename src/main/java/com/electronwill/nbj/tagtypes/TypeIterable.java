@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TypeIterable implements TagType<Iterable<?>> {
+public final class TypeIterable implements TagType<Iterable<?>> {
 	TypeIterable() {}
 
 	@Override

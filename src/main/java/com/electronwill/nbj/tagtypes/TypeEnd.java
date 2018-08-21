@@ -4,7 +4,7 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class TypeEnd implements TagType<Void> {
+public final class TypeEnd implements TagType<Void> {
 	TypeEnd() {}
 
 	@Override

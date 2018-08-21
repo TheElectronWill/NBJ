@@ -4,7 +4,7 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class TypeLongArray implements TagType<long[]> {
+public final class TypeLongArray implements TagType<long[]> {
 	TypeLongArray() {}
 
 	@Override

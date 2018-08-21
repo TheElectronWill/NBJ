@@ -4,7 +4,7 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class TypeInt implements TagType<Integer> {
+public final class TypeInt implements TagType<Integer> {
 	TypeInt() {}
 
 	@Override

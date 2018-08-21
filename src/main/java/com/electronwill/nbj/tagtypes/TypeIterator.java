@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class TypeIterator implements TagType<Iterator<?>> {
+public final class TypeIterator implements TagType<Iterator<?>> {
 	TypeIterator() {}
 
 	@Override

@@ -4,7 +4,7 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class TypeFloat implements TagType<Float> {
+public final class TypeFloat implements TagType<Float> {
 	TypeFloat() {}
 
 	@Override

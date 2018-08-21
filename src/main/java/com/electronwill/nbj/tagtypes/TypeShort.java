@@ -4,7 +4,7 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class TypeShort implements TagType<Short> {
+public final class TypeShort implements TagType<Short> {
 	TypeShort() {}
 
 	@Override

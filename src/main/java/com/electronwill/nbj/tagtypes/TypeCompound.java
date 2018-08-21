@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TypeCompound implements TagType<Map<String, Object>> {
+public final class TypeCompound implements TagType<Map<String, Object>> {
 	TypeCompound() {}
 
 	@Override

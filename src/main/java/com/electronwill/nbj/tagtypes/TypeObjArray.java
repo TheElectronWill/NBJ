@@ -7,7 +7,7 @@ import java.io.IOException;
 /**
  * Reads and writes object arrays as NBT lists.
  */
-public class TypeObjArray implements TagType<Object[]> {
+public final class TypeObjArray implements TagType<Object[]> {
 	TypeObjArray() {}
 
 	@Override

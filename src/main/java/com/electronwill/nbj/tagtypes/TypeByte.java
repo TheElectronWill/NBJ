@@ -4,7 +4,7 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class TypeByte implements TagType<Byte> {
+public final class TypeByte implements TagType<Byte> {
 	TypeByte() {}
 
 	@Override

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class TypeList implements TagType<List<?>> {
+public final class TypeList implements TagType<List<?>> {
 	TypeList() {}
 
 	@Override

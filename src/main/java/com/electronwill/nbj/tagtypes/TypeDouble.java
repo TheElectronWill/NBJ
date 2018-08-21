@@ -4,7 +4,7 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class TypeDouble implements TagType<Double> {
+public final class TypeDouble implements TagType<Double> {
 	TypeDouble() {}
 
 	@Override

@@ -4,7 +4,7 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class TypeLong implements TagType<Long> {
+public final class TypeLong implements TagType<Long> {
 	TypeLong() {}
 
 	@Override
